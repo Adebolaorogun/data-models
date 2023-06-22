@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MyApp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <h1>Welcome to MyApp</h1>
+    <ul>
+        <li><a href="{{ url_for('governance') }}">Governance Model</a></li>
+        <li><a href="{{ url_for('reputation') }}">Reputation Model</a></li>
+        <li><a href="{{ url_for('token_voting') }}">Token Voting Model</a></li>
+        <li><a href="{{ url_for('nft_interaction') }}">NFT Interaction Model</a></li>
+        <li><a href="{{ url_for('social_media') }}">Social Media Model</a></li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reputation Model</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <h1>Reputation Model</h1>
+    <form method="POST" action="{{ url_for('reputation') }}">
+        <label for="column">Select Column:</label>
+        <select name="column" id="column">
+            {% for column_key, column_value in columns.items() %}
+                <option value="{{ column_key }}">{{ column_value }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="value">Minimum Value:</label>
+        <input type="number" name="value" id="value">
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if column and value %}
+        <h2>Visualizations for {{ columns[column] }} >= {{ value }}</h2>
+        <!-- Insert generated visualizations here -->
+    {% endif %}
+</body>
+</html>
