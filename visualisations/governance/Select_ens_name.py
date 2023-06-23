@@ -6,10 +6,9 @@ data = pd.read_csv('simulated_data.csv')
 
 
 def ens_analysis(ens_names):
-    # Filter the data based on the specified ENS names
+  
     filtered_data = data[data['ensName'].isin(ens_names)]
 
-    # Prepare data for plotting
     x_values = list(ens_names)
     total_votes = []
     total_proposal_interaction = []
@@ -19,13 +18,11 @@ def ens_analysis(ens_names):
         total_votes.append(ens_data['totalVotes'].iloc[0])
         total_proposal_interaction.append(ens_data['totalProposalInteraction'].iloc[0])
 
-    # Sort the data in descending order based on total votes
     sorted_indices = sorted(range(len(total_votes)), key=lambda k: total_votes[k], reverse=True)
     sorted_x_values = [x_values[i] for i in sorted_indices]
     sorted_total_votes = [total_votes[i] for i in sorted_indices]
     sorted_total_proposal_interaction = [total_proposal_interaction[i] for i in sorted_indices]
 
-    # Create a grouped bar chart for total votes and total proposal interaction
     fig = go.Figure()
     fig.add_trace(go.Bar(x=sorted_x_values, y=sorted_total_votes, name='Total Votes'))
     fig.add_trace(go.Bar(x=sorted_x_values, y=sorted_total_proposal_interaction, name='Total Proposal Interaction'))
