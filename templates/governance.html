@@ -1,32 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Governance Model</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>Analysis</title>
+    <!-- Add any necessary CSS or JavaScript links -->
 </head>
 <body>
-    <h1>Governance Model</h1>
-    <form method="POST" action="{{ url_for('governance') }}">
-        <label for="column">Select Column:</label>
-        <select name="column" id="column">
-            {% for column_key, column_value in columns.items() %}
-                <option value="{{ column_key }}">{{ column_value }}</option>
-            {% endfor %}
-        </select>
-        <br>
-        <label for="value">Minimum Value:</label>
-        <input type="number" name="value" id="value">
-        <br>
-        <button type="submit">Submit</button>
+    <h1>Analysis</h1>
+
+    <form action="/analysis" method="post">
+        <label for="total_vote_range">Total Vote Range:</label>
+        <input type="number" id="total_vote_range_min" name="total_vote_range_min" placeholder="Min">
+        <input type="number" id="total_vote_range_max" name="total_vote_range_max" placeholder="Max">
+
+        <label for="total_proposal_range">Total Proposal Range:</label>
+        <input type="number" id="total_proposal_range_min" name="total_proposal_range_min" placeholder="Min">
+        <input type="number" id="total_proposal_range_max" name="total_proposal_range_max" placeholder="Max">
+
+        <input type="submit" value="Submit">
     </form>
 
-    {% if column and value %}
-        <h2>Visualizations for {{ columns[column] }} >= {{ value }}</h2>
-        {% if chart_image %}
-            <img src="{{ url_for('static', filename=chart_image) }}" alt="Visualization">
-        {% else %}
-            <p>No visualizations available.</p>
-        {% endif %}
-    {% endif %}
+    <!-- Add the necessary HTML elements to display the charts -->
+    <!-- You can use the chart images or embed the charts using iframe or other methods -->
+
+    <script>
+        // Add any necessary JavaScript code for range selection or form validation
+    </script>
 </body>
 </html>
