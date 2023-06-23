@@ -26,7 +26,7 @@ total_vote_range = (1000, 2000)  # Replace with the actual total vote range
 total_proposal_range = (90, 100)  # Replace with the actual total proposal range
 ens_table = generate_ens_table(total_vote_range, total_proposal_range, data)
 
-# Create the table visualization using Plotly
+# viz
 fig = go.Figure(data=[go.Table(
     header=dict(values=list(ens_table.columns),
                 fill_color='paleturquoise',
