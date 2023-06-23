@@ -6,17 +6,16 @@ import pandas as pd
 import plotly.graph_objects as go
 
 def generate_ens_table(total_vote_range, total_proposal_range, data):
-    # Filter the data based on the specified total vote and total proposal ranges
+   
     filtered_data = data[(data['totalVotes'].between(*total_vote_range)) &
                          (data['totalProposalInteraction'].between(*total_proposal_range))]
 
-    # Get the unique ENS names from the filtered data
+    
     ens_names = filtered_data['ensName'].unique()
 
-    # Create a DataFrame with the filtered ENS names
+   
     ens_table = pd.DataFrame({'ENS Name': ens_names})
 
-    # Add additional columns from the filtered data to the table
     ens_table['Total Votes'] = ens_table['ENS Name'].apply(lambda x: filtered_data[filtered_data['ensName'] == x]['totalVotes'].sum())
     ens_table['Total Proposal Interaction'] = ens_table['ENS Name'].apply(lambda x: filtered_data[filtered_data['ensName'] == x]['totalProposalInteraction'].sum())
 
